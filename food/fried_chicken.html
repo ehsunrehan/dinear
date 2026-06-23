@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="preload" href="../models/fried chicken 3d model2.glb" as="fetch" crossorigin="anonymous">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
     </script>
 
@@ -34,12 +34,18 @@
             <h1>Fried Chicken</h1>
 
 
-            <model-viewer id="burgerModel" src="../models/fried chicken 3d model.glb" camera-controls auto-rotate shadow-intensity="1"
-                environment-image="neutral" style="width:100%;height:500px;">
+                                  <model-viewer
+id="burgerModel"
+src="../models/fried chicken 3d model2.glb"
 
-
-
-            </model-viewer>
+camera-controls
+auto-rotate
+loading="eager"
+reveal="auto"
+shadow-intensity="1"
+environment-image="neutral"
+style="width:100%;height:500px;">
+</model-viewer>
 
 
 
