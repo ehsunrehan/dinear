@@ -9,6 +9,93 @@ body {
     background: #FBF9F7; /* 🤍 Warm Off-White - Professional canvas */
     color: #1E1E1E; /* Dark Grey text */
 }
+/* ============================================================ */
+/* ========== 🏠 HOME PAGE (AR RESTAURANT MENU) ============== */
+/* ============================================================ */
+.home-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: #FBF9F7; /* ✅ Burger page jaisa background */
+    padding: 20px;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.home-container h1 {
+    font-size: 52px;
+    font-weight: 800;
+    color: #1E1E1E;
+    margin-bottom: 12px;
+    letter-spacing: -1px;
+}
+
+/* ✅ "AR Restaurant" ko orange highlight karo */
+.home-container h1 span {
+    color: #FF6B35;
+}
+
+.home-container p {
+    font-size: 18px;
+    color: #5A5A5A; /* ✅ Soft grey (black nahi) */
+    margin-bottom: 32px;
+    max-width: 450px;
+    line-height: 1.6;
+}
+
+/* ✅ Buttons wala container */
+.home-container .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap; /* ✅ Mobile par wrap ho jayen */
+}
+
+.home-container a {
+    text-decoration: none;
+}
+
+.home-container button {
+    height: 54px;
+    width: 130px;
+    background: #FFFFFF;
+    border: 2px solid #FF6B35;
+    color: #FF6B35;
+    border-radius: 60px; /* ✅ Pill shape */
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    letter-spacing: 0.3px;
+}
+
+/* ✅ Hover effect - Orange fill ho jaye */
+.home-container button:hover {
+    background: #FF6B35;
+    color: #FFFFFF;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.35);
+}
+
+/* ✅ Mobile Responsive (Chhoti screen) */
+@media (max-width: 480px) {
+    .home-container h1 {
+        font-size: 32px;
+    }
+    .home-container button {
+        height: 46px;
+        width: 110px;
+        font-size: 14px;
+    }
+    .home-container .button-group {
+        gap: 12px;
+    }
+}
+
+
 
 /* ===== NAVBAR (Aapka Chuna Hua Orange) ===== */
 .navbar {
