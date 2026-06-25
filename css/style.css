@@ -489,21 +489,20 @@ model-viewer {
         right: -90%;
         padding: 24px 20px;
     }
-       .rec-grid {
+        .rec-grid {
         justify-content: center;
-        gap: 12px; /* Gap thora kam */
+        gap: 12px;
     }
     .rec-card {
-        flex: 0 0 calc(50% - 6px); /* ✅ 50% width minus gap, automatically adjust */
+        flex: 0 0 calc(50% - 6px);
         max-width: calc(50% - 6px);
-        overflow: hidden;
-        border-radius: 14px;
         padding: 10px;
+        border-radius: 16px !important; /* ✅ Card khud round */
+        overflow: hidden !important;    /* ✅ Image card se bahar nahi niklegi */
         background: #FBF9F7;
         text-align: center;
         text-decoration: none;
         color: #1E1E1E;
-        transition: 0.3s;
         border: 1px solid rgba(0,0,0,0.04);
         display: flex;
         flex-direction: column;
@@ -511,10 +510,10 @@ model-viewer {
     }
     .rec-card img {
         width: 100%;
-        height: 140px; /* ✅ Height fixed rakhi hai, lekin width responsive hai */
+        height: 130px; /* ✅ Auto adjust height */
         object-fit: cover;
-        border-radius: 14px !important;
         display: block;
+        border-radius: 16px !important; /* ✅ Image ko bhi round kar diya */
     }
     .rec-card p {
         font-size: 14px;
