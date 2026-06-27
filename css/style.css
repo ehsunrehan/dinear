@@ -289,38 +289,86 @@ model-viewer {
 /* ============================================================== */
 /* ========== 🍔 FIXED: RECOMMENDATIONS (CARDS BADE) ============ */
 /* ============================================================== */
-.rec-grid {
-    display: flex;
-    gap: 24px; /* Cards ke beech thora aur gap */
-    flex-wrap: wrap;
+.rec-grid{
+    display:flex;
+    flex-direction:column;
+    align-items: center;  /* 👈 Ye add karo */
+    gap:20px;
 }
 
-.rec-card {
-    width: 100%;
-    max-width: 200px;
-    background: #FBF9F7;
-    padding: 14px;
-    border-radius: 20px;
-    text-align: center;
-    text-decoration: none;
-    color: #1E1E1E;
-    transition: 0.3s;
-    border: 1px solid rgba(0,0,0,0.04);
-    overflow: hidden; /* ✅ Image card se bahar nahi niklegi */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.rec-card{
+    display:flex;
+    flex-direction:column;   /* 👈 Image ke neeche text */
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+    max-width:280px;
+    min-height:170px;
+
+    padding:18px;
+
+    background:#fff;
+    border-radius:22px;
+
+    text-decoration:none;    /* 👈 Underline remove */
+    color:#1E1E1E;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.rec-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 35px rgba(0,0,0,.12);
+}
+
+
+
+.rec-card img{
+    width:110px;
+    height:110px;
+    object-fit:cover;
+    border-radius:50%;
+    margin-bottom:10px;
+    border:4px solid #FBF9F7;
+    background:#FBF9F7;
+
+
+}
+
+
+
+.rec-card p{
+    margin:0;
+    font-size:16px;
+    font-weight:700;
+    text-align:center;
+    text-decoration:none;
+}
+
+
+.rec-card,
+.rec-card:link,
+.rec-card:visited{
+    text-decoration:none;
+}
+
+.rec-card p{
+    text-decoration:none;
 }
 .rec-card:hover {
     transform: scale(1.04);
     box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
-.rec-card img {
-    border-radius: 16px;
-    object-fit: cover; /* Image crop hogi nahi, perfect fit hogi */
-    width: 100%;
-    height: 160px !important; 
-      display: block;
+.rec-card img{
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    border-radius:18px;
+    display:block;
+    margin-bottom:12px;
+    background:#FBF9F7;
 }
 .rec-card p {
     margin-top: 12px;
@@ -435,31 +483,69 @@ model-viewer {
 /* ========== RESPONSIVE =============== */
 /* ====================================== */
 
-@media (max-width: 992px) {
+
+/* ===== TABLET (769px - 992px) - HORIZONTAL ===== */
+@media (min-width: 769px) and (max-width: 992px) {
     .food-container {
-        flex-direction: column;
+        flex-direction: row !important;
         padding: 20px;
+        gap: 20px;
     }
     .description {
-        display: none; /* Hide desktop sidebar */
+        display: flex !important; /* Direct dikhega */
     }
     #menu-btn {
-        display: block; /* Show menu button on mobile */
+        display: none !important; /* Menu button chhupa */
     }
     model-viewer {
         height: 400px;
     }
     .rec-card {
-        max-width: 180px; /* ✅ Tablet pe 180px - araam se */
+        max-width: 180px;
     }
 }
 
+/* ===== MOBILE (<= 768px) - VERTICAL (Description Sidebar mein) ===== */
 @media (max-width: 768px) {
+    /* ✅ Sab se zaroori: Container ko VERTICAL karo */
+    .food-container {
+        flex-direction: column !important;
+        padding: 10px !important;
+        gap: 15px;
+    }
+    
+    /* ✅ Description ko neeche se hatao (sirf sidebar mein rakho) */
+    .description {
+        display: none !important;
+    }
+    
+    /* ✅ Menu button dikhao */
+    #menu-btn {
+        display: block !important;
+    }
+
+    /* ----- Baqi Mobile Styling (Waise ki waise) ----- */
     .navbar {
+        flex-wrap: wrap;
         padding: 10px 16px;
+        justify-content: center;
+    }
+    .navbar-left {
+        display: none;
+    }
+    .navbar-center {
+        flex: 1 1 100%;
+        justify-content: center;
+        order: -1;
+        margin-bottom: 4px;
+    }
+    .navbar-right {
+        flex: 1;
+        justify-content: flex-end;
+        gap: 8px;
     }
     .logo {
-        height: 65px;
+        height: 70px;
     }
     .social-icon {
         width: 32px;
@@ -467,14 +553,15 @@ model-viewer {
         font-size: 13px;
     }
     .viewer-section {
-        padding: 18px;
+        padding: 16px;
         border-radius: 20px;
+        width: 100%;
     }
     .viewer-section h1 {
         font-size: 26px;
     }
     model-viewer {
-        height: 320px;
+        height: 380px !important; /* Thora bada kiya */
     }
     .buttons {
         flex-wrap: wrap;
@@ -489,32 +576,14 @@ model-viewer {
         right: -90%;
         padding: 24px 20px;
     }
-        .rec-grid {
-        justify-content: center;
-        gap: 12px;
-    }
-    .rec-card {
-        flex: 0 0 calc(50% - 6px);
-        max-width: calc(50% - 6px);
-        padding: 10px;
-        border-radius: 16px !important; /* ✅ Card khud round */
-        overflow: hidden !important;    /* ✅ Image card se bahar nahi niklegi */
-        background: #FBF9F7;
-        text-align: center;
-        text-decoration: none;
-        color: #1E1E1E;
-        border: 1px solid rgba(0,0,0,0.04);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .rec-card img {
-        width: 100%;
-        height: 130px; /* ✅ Auto adjust height */
-        object-fit: cover;
-        display: block;
-        border-radius: 16px !important; /* ✅ Image ko bhi round kar diya */
-    }
+
+.rec-card img{
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    border-radius:18px;
+    display:block;
+}
     .rec-card p {
         font-size: 14px;
         font-weight: 700;
@@ -524,21 +593,164 @@ model-viewer {
 }
 
 @media (max-width: 480px) {
-    .rec-card {
-        flex: 0 0 calc(50% - 6px);
-        max-width: calc(50% - 6px);
-        padding: 8px;
+    /* ✅ Container ko VERTICAL karo */
+    .food-container {
+        flex-direction: column !important;
+        padding: 8px !important;
+        gap: 10px;
     }
-    .rec-card img {
-        height: 110px; /* ✅ Chhoti screen par height kam */
-        border-radius: 12px !important;
+    
+    /* ✅ Description ko neeche se hatao (sidebar mein rakho) */
+    .description {
+        display: none !important;
     }
+    
+    /* ✅ Menu button dikhao */
+    #menu-btn {
+        display: block !important;
+    }
+    
+    /* ✅ 3D Viewer ko full width aur chhota */
+    .viewer-section {
+        padding: 12px;
+        border-radius: 16px;
+        width: 100%;
+    }
+    .viewer-section h1 {
+        font-size: 22px;
+    }
+    model-viewer {
+        height: 320px !important;
+    }
+    
+    /* ✅ Buttons */
+    .buttons {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .ar-btn {
+        flex: 1;
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* ✅ Recommended Cards - Chhoti screen par fit */
+    .rec-grid {
+        justify-content: center;
+        gap: 10px;
+    }
+.rec-card{
+    width:100%;
+    max-width:260px;
+    padding:16px;
+    border-radius:18px;
+}
+
+.rec-card img{
+    width:130px;
+    height:130px;
+    object-fit:contain;
+    border-radius:18px;
+}
     .rec-card p {
         font-size: 12px;
         margin-top: 6px;
     }
+    
+    /* ✅ Sidebar - Chhoti screen par */
+    #sidebar {
+        width: 90%;
+        right: -95%;
+        padding: 20px 16px;
+        gap: 18px;
+    }
+    #sidebar h2 {
+        font-size: 20px;
+    }
+    #sidebar h3 {
+        font-size: 16px;
+    }
+    #sidebar p {
+        font-size: 14px;
+    }
+    #sidebar ul li {
+        font-size: 13px;
+        padding: 4px 14px;
+    }
+    #sidebar .price-tag {
+        font-size: 18px;
+        padding: 6px 16px;
+    }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+/* ===== FINAL FIX: Mobile Vertical (<= 768px) ===== */
+@media (max-width: 768px) {
+    /* ✅ Container ko VERTICAL kar do */
+    .food-container {
+        flex-direction: column !important;
+        padding: 10px !important;
+        gap: 15px !important;
+    }
+    
+    /* ✅ Description ko neeche se hatao (sidebar mein rakho) */
+    .description {
+        display: none !important;
+    }
+    
+    /* ✅ Menu button dikhao */
+    #menu-btn {
+        display: block !important;
+    }
+    
+    /* ✅ 3D Viewer ko full width */
+    .viewer-section {
+        width: 100% !important;
+    }
+    model-viewer {
+        height: 380px !important;
+    }
+    
+    /* ✅ Recommended Cards */
+    .rec-card {
+        max-width: 160px !important;
+        flex: 0 0 calc(50% - 10px) !important;
+    }
+    .rec-card img {
+        height: 140px !important;
+    }
+}
+
+
+
+
+
+
+@media (max-width:768px){
+
+.rec-grid{
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.rec-card{
+    width:100%;
+    max-width:260px;
+}
+
+}
 
 
 
